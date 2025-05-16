@@ -4,91 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-    
-    <!-- Tailwind CSS -->
-    <link href="libs/tailwind.css" rel="stylesheet">
-    
-    <!-- FullCalendar -->
-    <link href="libs/fullcalendar.css" rel="stylesheet">
-    <script src="libs/fullcalendar.js"></script>
-    <script src="libs/daygrid.js"></script>
-    
-    <!-- Recharts -->
-    <script src="libs/recharts.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
+    <script src="app.js" defer></script>
+    <script src="calendar.js" defer></script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="flex">
-        <!-- Sidebar -->
-        <div class="sidebar bg-gray-900 text-white w-64 h-screen p-4">
-            <h2 class="text-2xl font-bold mb-6">Task Manager</h2>
-            <ul class="space-y-4">
-                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-                    🏠 Dashboard
-                </li>
-                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-                    📅 Calendar
-                </li>
-                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-                    👥 Team
-                </li>
-                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-                    ⚙️ Settings
-                </li>
-            </ul>
-            <div class="mt-auto">
-                <p class="text-gray-400 text-sm">Logged in as:</p>
-                <p class="font-semibold">Mchie</p>
-            </div>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-4 text-center">Task Manager</h1>
+        <div class="flex justify-end mb-4">
+            <button id="theme-toggle" class="bg-gray-800 text-white py-2 px-4 rounded-lg">Toggle Theme</button>
         </div>
-
-        <!-- Main Content -->
-        <div class="main-content flex-1 p-6">
-            <!-- Header -->
-            <div class="header bg-white rounded-lg shadow-md p-4 mb-4">
-                <h1 class="text-3xl font-bold">Start Your Day & Be Productive ✌️</h1>
-                <p>Morning 🌅</p>
-            </div>
-
-            <!-- Task Overview -->
-            <div class="task-overview bg-white rounded-lg shadow-md p-4 mb-4">
-                <h2 class="text-2xl font-semibold mb-2">Today's Tasks</h2>
-                <p class="text-gray-600">You have 5 tasks today. Keep it up! 🚀</p>
-                <ul class="space-y-2">
-                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
-                        Delivery App Kit
-                        <span class="text-green-500">✅</span>
-                    </li>
-                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
-                        Dribble Shot
-                        <span class="text-yellow-500">🕒</span>
-                    </li>
-                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
-                        Client Meeting
-                        <span class="text-red-500">⏳</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Task Progress -->
-            <div id="task-progress" class="task-progress bg-white rounded-lg shadow-md p-4 mb-4">
-                <h2 class="text-2xl font-semibold mb-2">Task Progress</h2>
-                <div id="progress-bar"></div>
-            </div>
-
-            <!-- Task Timeline -->
-            <div id="task-timeline" class="task-timeline bg-white rounded-lg shadow-md p-4 mb-4">
-                <h2 class="text-2xl font-semibold mb-2">Task Timeline</h2>
-                <p class="text-gray-600">Upcoming tasks and deadlines.</p>
-            </div>
-
-            <!-- Calendar -->
-            <div id="calendar" class="bg-white rounded-lg shadow-md p-4 mb-4"></div>
+        <div id="task-list" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Tasks</h2>
+            <ul id="tasks" class="space-y-4"></ul>
+            <input type="text" id="new-task" placeholder="Add a new task..." class="w-full p-2 mb-4 border rounded-lg">
+            <input type="date" id="task-date" class="w-full p-2 mb-4 border rounded-lg">
+            <input type="time" id="task-time" class="w-full p-2 mb-4 border rounded-lg">
+            <button id="add-task" class="bg-blue-500 text-white py-2 px-4 rounded-lg w-full">Add Task</button>
         </div>
+        <div id="calendar" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6"></div>
     </div>
-
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
 </body>
 </html>
