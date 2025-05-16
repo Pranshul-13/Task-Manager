@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="libs/tailwind.css" rel="stylesheet">
+    
+    <!-- FullCalendar -->
+    <link href="libs/fullcalendar.css" rel="stylesheet">
+    <script src="libs/fullcalendar.js"></script>
+    <script src="libs/daygrid.js"></script>
+    
+    <!-- Recharts -->
+    <script src="libs/recharts.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar bg-gray-900 text-white w-64 h-screen p-4">
+            <h2 class="text-2xl font-bold mb-6">Task Manager</h2>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+                    🏠 Dashboard
+                </li>
+                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+                    📅 Calendar
+                </li>
+                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+                    👥 Team
+                </li>
+                <li class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+                    ⚙️ Settings
+                </li>
+            </ul>
+            <div class="mt-auto">
+                <p class="text-gray-400 text-sm">Logged in as:</p>
+                <p class="font-semibold">Mchie</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content flex-1 p-6">
+            <!-- Header -->
+            <div class="header bg-white rounded-lg shadow-md p-4 mb-4">
+                <h1 class="text-3xl font-bold">Start Your Day & Be Productive ✌️</h1>
+                <p>Morning 🌅</p>
+            </div>
+
+            <!-- Task Overview -->
+            <div class="task-overview bg-white rounded-lg shadow-md p-4 mb-4">
+                <h2 class="text-2xl font-semibold mb-2">Today's Tasks</h2>
+                <p class="text-gray-600">You have 5 tasks today. Keep it up! 🚀</p>
+                <ul class="space-y-2">
+                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
+                        Delivery App Kit
+                        <span class="text-green-500">✅</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
+                        Dribble Shot
+                        <span class="text-yellow-500">🕒</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-gray-50 p-2 rounded-md shadow-sm">
+                        Client Meeting
+                        <span class="text-red-500">⏳</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Task Progress -->
+            <div id="task-progress" class="task-progress bg-white rounded-lg shadow-md p-4 mb-4">
+                <h2 class="text-2xl font-semibold mb-2">Task Progress</h2>
+                <div id="progress-bar"></div>
+            </div>
+
+            <!-- Task Timeline -->
+            <div id="task-timeline" class="task-timeline bg-white rounded-lg shadow-md p-4 mb-4">
+                <h2 class="text-2xl font-semibold mb-2">Task Timeline</h2>
+                <p class="text-gray-600">Upcoming tasks and deadlines.</p>
+            </div>
+
+            <!-- Calendar -->
+            <div id="calendar" class="bg-white rounded-lg shadow-md p-4 mb-4"></div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
