@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
-    <script src="app.js" defer></script>
-    <script src="calendar.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advanced Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-    <div class="container mx-auto p-6">
-        <h1 class="text-4xl font-bold mb-4 text-center">Task Manager</h1>
-        <div class="flex justify-end mb-4">
-            <button id="theme-toggle" class="bg-gray-800 text-white py-2 px-4 rounded-lg">Toggle Theme</button>
+<body>
+    <header>Advanced Task Manager</header>
+
+    <!-- Login Section -->
+    <section id="login-section">
+        <h2>Login / Sign Up</h2>
+        <div id="login-error" role="alert" aria-live="assertive"></div>
+        <input type="text" id="username-input" placeholder="Enter username" autocomplete="username" />
+        <button id="login-button">Login</button>
+    </section>
+
+    <!-- Main App Section -->
+    <main id="app-section" class="hidden" aria-live="polite" aria-label="Task Manager Application">
+        <div id="app-header">
+            <h2 id="welcome-user">Welcome</h2>
+            <button id="logout-button" aria-label="Logout">Logout</button>
         </div>
-        <div id="task-list" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Tasks</h2>
-            <ul id="tasks" class="space-y-4"></ul>
-            <input type="text" id="new-task" placeholder="Add a new task..." class="w-full p-2 mb-4 border rounded-lg">
-            <input type="date" id="task-date" class="w-full p-2 mb-4 border rounded-lg">
-            <input type="time" id="task-time" class="w-full p-2 mb-4 border rounded-lg">
-            <button id="add-task" class="bg-blue-500 text-white py-2 px-4 rounded-lg w-full">Add Task</button>
-        </div>
-        <div id="calendar" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6"></div>
-    </div>
+
+        <form id="task-form" aria-label="Add New Task">
+            <input type="text" id="task-title" placeholder="Task title" aria-label="Task title" required autocomplete="off" />
+            <select id="task-priority" aria-label="Select task priority" required>
+                <option value="" disabled selected>Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <input type="date" id="task-deadline" aria-label="Task deadline" />
+            <select id="task-recurring" aria-label="Recurring task frequency">
+                <option value="">No recurrence</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+            </select>
+            <button type="submit" aria-label="Add Task">Add Task</button>
+        </form>
+
+        <ul id="task-list" aria-label="List of tasks" tabindex="0"></ul>
+
+        <section id="calendar-view" aria-label="Task calendar view" tabindex="0">
+            <div id="calendar-header" role="region" aria-live="polite">
+                <button id="prev-month" aria-label="Previous month">&lt;</button>
+                <div id="calendar-month-year" aria-live="polite" aria-atomic="true"></div>
+                <button id="next-month" aria-label="Next month">&gt;</button>
+            </div>
+            <div id="calendar-grid" role="grid"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
